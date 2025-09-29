@@ -3,14 +3,20 @@ package routes
 import (
 	"miniProject/controllers"
 	"os"
-
+    "log"
 	"github.com/gin-gonic/gin"
 )
 
 
 func SetupRouter() *gin.Engine { 
-	user := os.Getenv("BASIC_AUTH_USERNAME")
-	password := os.Getenv("BASIC_AUTH_PASSWORD")
+    user := os.Getenv("BASIC_AUTH_USER")
+    password := os.Getenv("BASIC_AUTH_PASSWORD")
+    if user == "" || password == "" {
+        log.Println("FATAL ERROR: BASIC_AUTH_USER or BASIC_AUTH_PASSWORD is not set!") 
+
+        user = "admin"
+        password = "admin"
+    }
     router := gin.Default()
 
     authorized := router.Group("/api")

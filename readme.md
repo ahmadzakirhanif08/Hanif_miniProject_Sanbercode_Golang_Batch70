@@ -92,4 +92,4 @@ Base URL: `http://localhost:8080/api`
 
  Proyek ini telah dideploy ke **Railway**.
 
-[Link Deployment Railway Anda]
+(https://hanifminiprojectsanbercodegolangbatch70-production.up.railway.app/)
