@@ -37,10 +37,10 @@ func main() {
     // 3. Setup dan Jalankan Router Gin
     router := routes.SetupRouter() // <-- Panggil fungsi SetupRouter dari package routes
 
-    log.Println("Server starting on :8787")
+    log.Println("Server starting on :8080")
 	router.SetTrustedProxies([]string{"127.0.0.1"})
     // Pastikan Anda menangani error di Run jika ada
-    if err := router.Run(":8787"); err != nil {
+    if err := router.Run(":8080"); err != nil {
         log.Fatalf("Failed to run server: %v", err)
     }
 	
