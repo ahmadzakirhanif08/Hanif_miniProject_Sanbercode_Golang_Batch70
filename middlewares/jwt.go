@@ -10,7 +10,6 @@ import (
 
 var jwtSecret = []byte("UraniumPlutonium!!!")
 
-// Claim struct untuk JWT (payload)
 type UserClaims struct {
     UserID   int    `json:"user_id"`
     Username string `json:"username"`
@@ -34,7 +33,7 @@ func GenerateToken(userID int, username string) (string, error) {
     return tokenString, err
 }
 
-// Middleware untuk Memverifikasi Token
+
 func JWTAuthMiddleware() gin.HandlerFunc {
     return func(c *gin.Context) {
         authHeader := c.GetHeader("Authorization")
@@ -55,7 +54,6 @@ func JWTAuthMiddleware() gin.HandlerFunc {
             return jwtSecret, nil
         })
 
-        // 3. Tangani Error Validasi
         if err != nil || !token.Valid {
             if err != nil && err.(*jwt.ValidationError).Errors == jwt.ValidationErrorExpired {
                  c.JSON(http.StatusUnauthorized, gin.H{"error": "Token has expired"})
